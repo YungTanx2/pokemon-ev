@@ -1,0 +1,22 @@
+{
+  "_note": "Community pull rates for Shrouded Fable (SV6.5). Source: Pok\u00e9Beach community data.",
+  "_source": "https://www.pokebeach.com",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common": 0.57,
+    "Uncommon": 0.27,
+    "Rare": 0.16
+  },
+  "hitDistribution": {
+    "Rare": 0.6019,
+    "Double Rare": 0.1667,
+    "Ultra Rare": 0.0667,
+    "Illustration Rare": 0.077,
+    "ACE SPEC Rare": 0.05,
+    "Special Illustration Rare": 0.0149,
+    "Hyper Rare": 0.0069,
+    "Mega Hyper Rare": 0.0
+  }
+}

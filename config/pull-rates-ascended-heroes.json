@@ -1,0 +1,23 @@
+{
+  "_note": "Community pull rates for Ascended Heroes (ME2.5). Source: Pok\u00e9Beach/ThePriceDex community data.",
+  "_source": "https://www.pokebeach.com",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common": 0.3515,
+    "Uncommon": 0.1665,
+    "Rare": 0.0987,
+    "Poke Ball Holo": 0.3333
+  },
+  "hitDistribution": {
+    "Rare": 0.5771,
+    "Double Rare": 0.2,
+    "Ultra Rare": 0.0833,
+    "Illustration Rare": 0.125,
+    "ACE SPEC Rare": 0.0,
+    "Special Illustration Rare": 0.0127,
+    "Hyper Rare": 0.0,
+    "Mega Hyper Rare": 0.0019
+  }
+}

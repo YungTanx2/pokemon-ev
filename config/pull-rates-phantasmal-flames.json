@@ -1,0 +1,22 @@
+{
+  "_note": "Community pull rates for Phantasmal Flames (ME2). Source: TCG Protectors (10,000+ packs).",
+  "_source": "https://www.tcgplayer.com",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common": 0.57,
+    "Uncommon": 0.27,
+    "Rare": 0.16
+  },
+  "hitDistribution": {
+    "Rare": 0.5923,
+    "Double Rare": 0.2,
+    "Ultra Rare": 0.0833,
+    "Illustration Rare": 0.1111,
+    "ACE SPEC Rare": 0.0,
+    "Special Illustration Rare": 0.0125,
+    "Hyper Rare": 0.0,
+    "Mega Hyper Rare": 0.0008
+  }
+}
