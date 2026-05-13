@@ -223,6 +223,8 @@ function extractRarity(extendedData: ExtendedDataEntry[] = []): string | null {
     'Illustration Rare', 'Special Illustration Rare',
     'Hyper Rare', 'ACE SPEC Rare', 'Mega Hyper Rare',
     'Poke Ball Holo', 'Master Ball Holo',
+    'Shiny Rare', 'Shiny Ultra Rare',   // Paldean Fates
+    'Mega Attack Rare',                  // Ascended Heroes
   ]);
   const entry = extendedData.find((e) => e.name === 'Rarity');
   if (!entry || !VALID_RARITIES.has(entry.value)) return null;

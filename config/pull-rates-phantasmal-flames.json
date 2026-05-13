@@ -1,22 +1,20 @@
 {
-  "_note": "Community pull rates for Phantasmal Flames (ME2). Source: TCG Protectors (10,000+ packs).",
-  "_source": "https://www.tcgplayer.com",
+  "_note": "Pull rates from TCGPlayer empirical study (10000+ packs via TCG Protectors), sourced via ThePriceDex. Reverse holo splits use ME1 defaults (ThePriceDex omits split for this set). Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/me2/phantasmal-flames/pull-rates",
   "packsPerBox": 36,
   "commonCount": 6,
   "uncommonCount": 3,
   "reverseHoloDistribution": {
-    "Common": 0.57,
-    "Uncommon": 0.27,
-    "Rare": 0.16
+    "Common":   1.000000,
+    "Uncommon": 0.666667,
+    "Rare":     0.185185
   },
   "hitDistribution": {
-    "Rare": 0.5923,
-    "Double Rare": 0.2,
-    "Ultra Rare": 0.0833,
-    "Illustration Rare": 0.1111,
-    "ACE SPEC Rare": 0.0,
-    "Special Illustration Rare": 0.0125,
-    "Hyper Rare": 0.0,
-    "Mega Hyper Rare": 0.0008
+    "Rare":                       0.714286,
+    "Double Rare":                0.200000,
+    "Ultra Rare":                 0.083333,
+    "Illustration Rare":          0.111111,
+    "Special Illustration Rare":  0.012500,
+    "Mega Hyper Rare":            0.000794
   }
 }

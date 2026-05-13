@@ -1,22 +1,20 @@
 {
-  "_note": "Community pull rates for Mega Evolution (ME1). Source: TCGPlayer/ThePriceDex community data.",
-  "_source": "https://www.tcgplayer.com",
+  "_note": "Pull rates from TCGPlayer empirical study (5000+ packs), sourced via ThePriceDex. ME-era sets replaced Hyper Rare with Mega Hyper Rare (gold cards). Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/me1/mega-evolution/pull-rates",
   "packsPerBox": 36,
   "commonCount": 6,
   "uncommonCount": 3,
   "reverseHoloDistribution": {
-    "Common": 0.57,
-    "Uncommon": 0.27,
-    "Rare": 0.16
+    "Common":   1.000000,
+    "Uncommon": 0.666667,
+    "Rare":     0.185185
   },
   "hitDistribution": {
-    "Rare": 0.589,
-    "Double Rare": 0.2091,
-    "Ultra Rare": 0.0823,
-    "Illustration Rare": 0.1089,
-    "ACE SPEC Rare": 0.0,
-    "Special Illustration Rare": 0.0099,
-    "Hyper Rare": 0.0,
-    "Mega Hyper Rare": 0.0008
+    "Rare":                       0.714286,
+    "Double Rare":                0.200000,
+    "Ultra Rare":                 0.083333,
+    "Illustration Rare":          0.111111,
+    "Special Illustration Rare":  0.009901,
+    "Mega Hyper Rare":            0.000794
   }
 }

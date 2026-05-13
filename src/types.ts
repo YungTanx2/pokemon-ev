@@ -11,8 +11,13 @@ export type Rarity =
   | 'Hyper Rare'
   | 'ACE SPEC Rare'
   | 'Mega Hyper Rare'
-  | 'Poke Ball Holo'    // any non-Master-Ball ball-pattern reverse holo
-  | 'Master Ball Holo'; // Master Ball pattern reverse holo
+  | 'Poke Ball Holo'      // any non-Master-Ball ball-pattern reverse holo
+  | 'Master Ball Holo'   // Master Ball pattern reverse holo
+  // Paldean Fates exclusive (shiny-style variants)
+  | 'Shiny Rare'
+  | 'Shiny Ultra Rare'
+  // Ascended Heroes exclusive
+  | 'Mega Attack Rare';
 
 // TCGCSV subType names for Pokemon cards.
 // Note: Double Rare / Ultra Rare / IR / SIR / HR only have Holofoil (no Normal print);

@@ -1,22 +1,20 @@
 {
-  "_note": "Community pull rates for Scarlet & Violet 151 (SV3.5). Source: community estimates.",
-  "_source": "https://www.pokebeach.com",
+  "_note": "Pull rates from TCGPlayer empirical study (8000+ packs), sourced via ThePriceDex. Fractions are per-pack expected counts (raw 1/X). Sums may exceed 1.0 — this reflects bonus hit slots in some packs.",
+  "_source": "https://www.thepricedex.com/set/sv3pt5/151/pull-rates",
   "packsPerBox": 36,
   "commonCount": 6,
   "uncommonCount": 3,
   "reverseHoloDistribution": {
-    "Common": 0.57,
-    "Uncommon": 0.27,
-    "Rare": 0.16
+    "Common":   0.833333,
+    "Uncommon": 0.769231,
+    "Rare":     0.303030
   },
   "hitDistribution": {
-    "Rare": 0.6099,
-    "Double Rare": 0.1667,
-    "Ultra Rare": 0.0667,
-    "Illustration Rare": 0.12,
-    "Special Illustration Rare": 0.0149,
-    "Hyper Rare": 0.0069,
-    "ACE SPEC Rare": 0.0,
-    "Mega Hyper Rare": 0.0
+    "Rare":                       0.833333,
+    "Double Rare":                0.133333,
+    "Ultra Rare":                 0.064516,
+    "Illustration Rare":          0.084746,
+    "Special Illustration Rare":  0.031056,
+    "Hyper Rare":                 0.019417
   }
 }
