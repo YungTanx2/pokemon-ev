@@ -30,6 +30,9 @@ interface PullRates {
   hitDistribution: Record<string, number>;
 }
 
+/** Rarities with a hit-slot fraction below this are classified as "case hits". */
+const CASE_HIT_THRESHOLD = 0.02; // < 1-in-50 packs
+
 /**
  * Per-card threshold separating "individually sellable" from "bulk-only".
  * TCGPlayer Market prices embed ~$0.50 of single-sale overhead (fees + shipping);
@@ -100,6 +103,7 @@ export function calculateEV(
   entries: PriceEntry[],
   pullRates: PullRates,
   boxCost: number,
+  excludeCaseHits: boolean = false,
 ): EvResult {
   const grouped = groupEntries(entries);
   const { packsPerBox, commonCount, uncommonCount, reverseHoloDistribution, hitDistribution } = pullRates;
@@ -143,11 +147,18 @@ export function calculateEV(
   // ── Hit slot ──────────────────────────────────────────────────────────────
   // hitDistribution values are P(rarity per pack), stored as subType='Normal'
   // (via Holofoil fallback in tcgcsv.ts for ex/V/IR/SIR/HR cards).
+  const caseHitRarities = new Set<string>(
+    Object.entries(hitDistribution)
+      .filter(([, fraction]) => fraction < CASE_HIT_THRESHOLD)
+      .map(([rarity]) => rarity),
+  );
+
   let hitEv = 0;
   const hitBreakdown: Record<string, HitRarityBreakdown> = {};
   for (const [rarity, fraction] of Object.entries(hitDistribution)) {
     const avgPrice = byRarity[rarity]?.avgNormalPrice ?? null;
-    const ev       = fraction * (avgPrice ?? 0);
+    const isCaseHit = caseHitRarities.has(rarity);
+    const ev = fraction * (excludeCaseHits && isCaseHit ? 0 : (avgPrice ?? 0));
     hitEv += ev;
     if (byRarity[rarity]) byRarity[rarity].evContribution += ev;
     hitBreakdown[rarity] = { fraction, avgPrice, evPerBox: ev * packsPerBox };
@@ -158,17 +169,17 @@ export function calculateEV(
   const evPerBox  = evPerPack * packsPerBox;
 
   // ── Top pulls ─────────────────────────────────────────────────────────────
-  // topHoloPulls: Holofoil-finish cards (hit-slot rarities) — stored as subType='Normal'
-  //   via the Holofoil fallback. Excludes Common/Uncommon/Rare (which are the RH slot).
-  const hitRarities = new Set<Rarity>([
-    'Double Rare', 'Ultra Rare',
-    'Illustration Rare', 'Special Illustration Rare',
-    'Hyper Rare', 'ACE SPEC Rare', 'Mega Hyper Rare',
-    'Rare',  // include base Rare for completeness (some are worth >$1)
-  ]);
+  // Derive hit-slot rarities from the pull-rate config rather than a hardcoded list.
+  // topHoloPulls excludes case-hit rarities (they go in topCaseHitPulls).
+  const allHitRarities = new Set<string>(Object.keys(hitDistribution));
 
   const topHoloPulls = entries
-    .filter(e => e.subType === 'Normal' && hitRarities.has(e.rarity as Rarity) && effectivePrice(e) >= 1.0)
+    .filter(e => e.subType === 'Normal' && allHitRarities.has(e.rarity ?? '') && !caseHitRarities.has(e.rarity ?? '') && effectivePrice(e) >= 1.0)
+    .sort((a, b) => effectivePrice(b) - effectivePrice(a))
+    .slice(0, 20);
+
+  const topCaseHitPulls = entries
+    .filter(e => e.subType === 'Normal' && caseHitRarities.has(e.rarity ?? '') && effectivePrice(e) >= 1.0)
     .sort((a, b) => effectivePrice(b) - effectivePrice(a))
     .slice(0, 20);
 
@@ -183,8 +194,10 @@ export function calculateEV(
     boxCost,
     boxPriceSource: 'unknown' as const, // overwritten by server.ts
     profit: evPerBox - boxCost,
+    excludedCaseHits: excludeCaseHits,
     byRarity,
     topHoloPulls,
+    topCaseHitPulls,
     topReverseHoloPulls,
     slotBreakdown,
     hitBreakdown,

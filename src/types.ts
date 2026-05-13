@@ -73,9 +73,12 @@ export interface EvResult {
   /** How the box price was determined. */
   boxPriceSource: 'box' | 'bundle' | 'manual' | 'unknown';
   profit: number;
+  excludedCaseHits: boolean;
   byRarity: Record<string, RarityStats>;
-  /** Top Holofoil-finish cards by price (Double Rare / Ultra Rare / IR / SIR / HR, etc.) */
+  /** Top hit-slot cards by price, excluding case-hit rarities (< 1/50 packs). */
   topHoloPulls: PriceEntry[];
+  /** Top hit-slot cards that qualify as case hits (< 1/50 packs pull rate). */
+  topCaseHitPulls: PriceEntry[];
   /** Top Reverse Holofoil cards by price (includes Poke Ball / Master Ball pattern holos) */
   topReverseHoloPulls: PriceEntry[];
   slotBreakdown: SlotBreakdown;

@@ -45,7 +45,7 @@ export async function ingestDate(dateStr: string): Promise<void> {
       stream.on('error', reject);
     });
 
-    // 3. Walk extracted files, filter to Lorcana (category 71), parse + ingest
+    // 3. Walk extracted files, filter to Pokemon (category 3), parse + ingest
     let filesIngested = 0;
     walkDir(extractDir, (filePath) => {
       const relative = filePath.replace(extractDir, '').replace(/\\/g, '/').replace(/^\//, '');
