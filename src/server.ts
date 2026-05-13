@@ -127,10 +127,32 @@ app.get('/api/analyze', async (req, res) => {
         ? prices.find((pr) => pr.productId === boxProduct.productId && pr.subTypeName === 'Normal')
         : undefined;
       const fetched = boxEntry ? (boxEntry.marketPrice ?? boxEntry.midPrice ?? null) : null;
-      boxCost = fetched ?? 0;
-      const priceMsg = boxCost > 0
-        ? `Box market price: $${boxCost.toFixed(2)}`
-        : 'Could not find box price in TCGCSV data — using $0';
+
+      let priceMsg: string;
+      if (fetched !== null) {
+        boxCost = fetched;
+        priceMsg = `Box market price: $${boxCost.toFixed(2)}`;
+      } else {
+        // Fallback: 6 × Booster Bundle (6 packs each = 1 box equivalent)
+        const bundleProduct = products.find((p) => {
+          const n = p.name.toLowerCase();
+          return !extractRarity(p.extendedData)
+            && n.includes('booster bundle')
+            && !n.includes('case')
+            && !n.includes('set of');
+        });
+        const bundleEntry = bundleProduct
+          ? prices.find((pr) => pr.productId === bundleProduct.productId && pr.subTypeName === 'Normal')
+          : undefined;
+        const bundlePrice = bundleEntry ? (bundleEntry.marketPrice ?? bundleEntry.midPrice ?? null) : null;
+        if (bundlePrice !== null) {
+          boxCost = bundlePrice * 6;
+          priceMsg = `No booster box found — using 6 × Booster Bundle: $${boxCost.toFixed(2)}`;
+        } else {
+          boxCost = 0;
+          priceMsg = 'Could not find box or bundle price in TCGCSV data — using $0';
+        }
+      }
       send({ type: 'progress', step: 3, status: 'done', message: priceMsg });
     }
 
