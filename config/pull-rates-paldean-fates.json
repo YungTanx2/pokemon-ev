@@ -1,0 +1,22 @@
+{
+  "_note": "Pull rates from TCGPlayer empirical study (8000+ packs), sourced via ThePriceDex. Shiny Rare and Shiny Ultra Rare are Paldean Fates-exclusive shiny-variant rarities. Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/sv4pt5/paldean-fates/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":   0.769231,
+    "Uncommon": 0.476190,
+    "Rare":     0.312500
+  },
+  "hitDistribution": {
+    "Rare":                       0.769231,
+    "Double Rare":                0.158730,
+    "Ultra Rare":                 0.066225,
+    "Illustration Rare":          0.071942,
+    "Special Illustration Rare":  0.017211,
+    "Hyper Rare":                 0.016103,
+    "Shiny Rare":                 0.256410,
+    "Shiny Ultra Rare":           0.076923
+  }
+}

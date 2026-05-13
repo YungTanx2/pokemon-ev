@@ -1,0 +1,20 @@
+{
+  "_note": "Pull rates from TCGPlayer empirical study (8000+ packs), sourced via ThePriceDex. Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/sv10/destined-rivals/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":   1.000000,
+    "Uncommon": 0.714286,
+    "Rare":     0.208333
+  },
+  "hitDistribution": {
+    "Rare":                       0.714286,
+    "Double Rare":                0.200000,
+    "Ultra Rare":                 0.064103,
+    "Illustration Rare":          0.082645,
+    "Special Illustration Rare":  0.010604,
+    "Hyper Rare":                 0.006699
+  }
+}

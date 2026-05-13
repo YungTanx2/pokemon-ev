@@ -1,0 +1,20 @@
+{
+  "_note": "Pull rates from TCGPlayer empirical study (8000+ packs), sourced via ThePriceDex. Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/sv9/journey-together/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":   1.111111,
+    "Uncommon": 0.555556,
+    "Rare":     0.212766
+  },
+  "hitDistribution": {
+    "Rare":                       0.714286,
+    "Double Rare":                0.204082,
+    "Ultra Rare":                 0.065359,
+    "Illustration Rare":          0.084746,
+    "Special Illustration Rare":  0.011601,
+    "Hyper Rare":                 0.007299
+  }
+}

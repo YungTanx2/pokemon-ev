@@ -1,0 +1,21 @@
+{
+  "_note": "Pull rates from TCGPlayer empirical study (8000+ packs), sourced via ThePriceDex. Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/sv7/stellar-crown/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":   1.111111,
+    "Uncommon": 0.588235,
+    "Rare":     0.222222
+  },
+  "hitDistribution": {
+    "Rare":                       0.769231,
+    "Double Rare":                0.169492,
+    "Ultra Rare":                 0.067568,
+    "Illustration Rare":          0.078125,
+    "ACE SPEC Rare":              0.049505,
+    "Special Illustration Rare":  0.011099,
+    "Hyper Rare":                 0.007299
+  }
+}

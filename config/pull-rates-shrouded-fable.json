@@ -1,0 +1,21 @@
+{
+  "_note": "Pull rates from TCGPlayer empirical study (8000+ packs), sourced via ThePriceDex. Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/sv6pt5/shrouded-fable/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":   0.909091,
+    "Uncommon": 0.666667,
+    "Rare":     0.238095
+  },
+  "hitDistribution": {
+    "Rare":                       0.769231,
+    "Double Rare":                0.166667,
+    "Ultra Rare":                 0.069930,
+    "Illustration Rare":          0.076923,
+    "ACE SPEC Rare":              0.050000,
+    "Special Illustration Rare":  0.011468,
+    "Hyper Rare":                 0.007795
+  }
+}
