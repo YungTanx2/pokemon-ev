@@ -346,7 +346,7 @@
       <div class="stat-card">
         <div class="label">Box Cost</div>
         <div class="value" id="stat-box-cost" style="color:#3b82f6">—</div>
-        <div class="sub">Market price (TCGPlayer)</div>
+        <div class="sub" id="stat-box-cost-sub">Market price (TCGPlayer)</div>
       </div>
       <div class="stat-card">
         <div class="label">Expected Box Value</div>
@@ -586,6 +586,8 @@
 
       // Summary banner
       document.getElementById('stat-box-cost').textContent = fmt(result.boxCost);
+      const boxCostSubs = { box: 'Market price (TCGPlayer)', bundle: '6 × Booster Bundle (TCGPlayer)', manual: 'Manual override', unknown: 'Price unavailable' };
+      document.getElementById('stat-box-cost-sub').textContent = boxCostSubs[result.boxPriceSource] ?? 'Market price (TCGPlayer)';
       document.getElementById('stat-ev').textContent = fmt(result.evPerBox);
       document.getElementById('stat-ev-sub').textContent =
         `${fmt(result.evPerPack)} per pack · ${packsPerBox} packs`;
