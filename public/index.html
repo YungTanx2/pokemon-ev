@@ -380,6 +380,24 @@
       </div>
     </div>
 
+    <!-- Hit Slot Breakdown -->
+    <section id="hit-breakdown-section" style="display:none">
+      <h2>💎 Hit Slot Breakdown by Rarity</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Rarity</th>
+              <th style="text-align:right">Pull Rate</th>
+              <th style="text-align:right">Avg Price</th>
+              <th style="text-align:right">Box EV</th>
+            </tr>
+          </thead>
+          <tbody id="hit-breakdown-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Spiking Cards -->
     <section id="spiking-cards-section" style="display:none">
       <h2>🔥 Price Spikes</h2>
@@ -626,6 +644,27 @@
       }).join('');
       document.getElementById('rh-tbody').innerHTML = rhHtml;
 
+      // Hit slot breakdown table
+      const hitBreakdown = result.hitBreakdown ?? {};
+      const hitRows = Object.entries(hitBreakdown)
+        .sort(([, a], [, b]) => b.evPerBox - a.evPerBox);
+      const hitTotal = hitRows.reduce((sum, [, d]) => sum + d.evPerBox, 0);
+      const hitTbody = document.getElementById('hit-breakdown-tbody');
+      hitTbody.innerHTML = hitRows.map(([rarity, data]) => {
+        const pullPct  = (data.fraction * 100).toFixed(1);
+        const avgPrice = data.avgPrice !== null ? fmt(data.avgPrice) : '—';
+        return `<tr>
+          <td>${rarityBadge(rarity)}</td>
+          <td style="text-align:right">${pullPct}%/pack</td>
+          <td style="text-align:right">${avgPrice}</td>
+          <td style="text-align:right;font-weight:600">${fmt(data.evPerBox)}</td>
+        </tr>`;
+      }).join('') + `<tr style="border-top:2px solid #e2e8f0;font-weight:700">
+        <td colspan="3" style="color:#475569">Total Hit Slot</td>
+        <td style="text-align:right">${fmt(hitTotal)}</td>
+      </tr>`;
+      document.getElementById('hit-breakdown-section').style.display = hitRows.length ? '' : 'none';
+
       // Show results, then auto-trigger full set scan
       document.getElementById('results-section').style.display = 'block';
       const setId = document.getElementById('set-select').value;
@@ -643,6 +682,7 @@
       document.getElementById('progress-bar-fill').style.width = '0%';
       document.getElementById('progress-bar-label').textContent = 'Step 0/4';
       document.getElementById('progress-status').textContent = '';
+      document.getElementById('hit-breakdown-section').style.display = 'none';
       document.getElementById('spiking-cards-section').style.display = 'none';
       document.getElementById('spike-daily-tbody').innerHTML = '';
       document.getElementById('spike-weekly-tbody').innerHTML = '';

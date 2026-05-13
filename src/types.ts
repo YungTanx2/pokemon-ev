@@ -60,6 +60,12 @@ export interface SlotBreakdown {
   hitEv: number;
 }
 
+export interface HitRarityBreakdown {
+  fraction: number;       // P(rarity per pack) from hitDistribution
+  avgPrice: number | null; // bulk-adjusted avg price for this rarity
+  evPerBox: number;       // fraction × avgPrice × packsPerBox
+}
+
 export interface EvResult {
   evPerPack: number;
   evPerBox: number;
@@ -71,6 +77,8 @@ export interface EvResult {
   /** Top Reverse Holofoil cards by price (includes Poke Ball / Master Ball pattern holos) */
   topReverseHoloPulls: PriceEntry[];
   slotBreakdown: SlotBreakdown;
+  /** Per-rarity EV breakdown for the hit slot, keyed by rarity name. */
+  hitBreakdown: Record<string, HitRarityBreakdown>;
   pricedCardCount: number;
   totalCardCount: number;
 }
