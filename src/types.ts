@@ -70,6 +70,8 @@ export interface EvResult {
   evPerPack: number;
   evPerBox: number;
   boxCost: number;
+  /** How the box price was determined. */
+  boxPriceSource: 'box' | 'bundle' | 'manual' | 'unknown';
   profit: number;
   byRarity: Record<string, RarityStats>;
   /** Top Holofoil-finish cards by price (Double Rare / Ultra Rare / IR / SIR / HR, etc.) */

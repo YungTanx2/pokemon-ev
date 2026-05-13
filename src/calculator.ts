@@ -181,6 +181,7 @@ export function calculateEV(
     evPerPack,
     evPerBox,
     boxCost,
+    boxPriceSource: 'unknown' as const, // overwritten by server.ts
     profit: evPerBox - boxCost,
     byRarity,
     topHoloPulls,

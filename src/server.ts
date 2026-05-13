@@ -105,6 +105,7 @@ app.get('/api/analyze', async (req, res) => {
     // ── Step 3: Resolve box price ──────────────────────────────────────────
     send({ type: 'progress', step: 3, status: 'running', message: 'Resolving booster box price…' });
     let boxCost: number;
+    let boxPriceSource: 'box' | 'bundle' | 'manual' | 'unknown';
 
     if (boxPriceParam !== undefined && boxPriceParam !== '') {
       boxCost = parseFloat(boxPriceParam);
@@ -113,6 +114,7 @@ app.get('/api/analyze', async (req, res) => {
         res.end();
         return;
       }
+      boxPriceSource = 'manual';
       send({ type: 'progress', step: 3, status: 'done', message: `Using manual box price: $${boxCost.toFixed(2)}` });
     } else {
       const boxProduct = products.find((p) => {
@@ -131,6 +133,7 @@ app.get('/api/analyze', async (req, res) => {
       let priceMsg: string;
       if (fetched !== null) {
         boxCost = fetched;
+        boxPriceSource = 'box';
         priceMsg = `Box market price: $${boxCost.toFixed(2)}`;
       } else {
         // Fallback: 6 × Booster Bundle (6 packs each = 1 box equivalent)
@@ -147,9 +150,11 @@ app.get('/api/analyze', async (req, res) => {
         const bundlePrice = bundleEntry ? (bundleEntry.marketPrice ?? bundleEntry.midPrice ?? null) : null;
         if (bundlePrice !== null) {
           boxCost = bundlePrice * 6;
+          boxPriceSource = 'bundle';
           priceMsg = `No booster box found — using 6 × Booster Bundle: $${boxCost.toFixed(2)}`;
         } else {
           boxCost = 0;
+          boxPriceSource = 'unknown';
           priceMsg = 'Could not find box or bundle price in TCGCSV data — using $0';
         }
       }
@@ -164,6 +169,7 @@ app.get('/api/analyze', async (req, res) => {
     const result = calculateEV(entries, pullRates, boxCost);
     result.totalCardCount = cards.length;
     result.pricedCardCount = pricedCards;
+    result.boxPriceSource = boxPriceSource;
 
     send({ type: 'progress', step: 4, status: 'done', message: `Matched prices for ${cards.length} cards (${pricedCards} price entries)` });
 
