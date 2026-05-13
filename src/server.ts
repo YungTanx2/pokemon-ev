@@ -115,9 +115,14 @@ app.get('/api/analyze', async (req, res) => {
       }
       send({ type: 'progress', step: 3, status: 'done', message: `Using manual box price: $${boxCost.toFixed(2)}` });
     } else {
-      const boxProduct = products.find(
-        (p) => !extractRarity(p.extendedData) && p.name.toLowerCase().includes('booster box'),
-      );
+      const boxProduct = products.find((p) => {
+        const n = p.name.toLowerCase();
+        return !extractRarity(p.extendedData)
+          && n.includes('booster box')
+          && !n.includes('case')
+          && !n.includes('half')
+          && !n.includes('display');
+      });
       const boxEntry = boxProduct
         ? prices.find((pr) => pr.productId === boxProduct.productId && pr.subTypeName === 'Normal')
         : undefined;
