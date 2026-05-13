@@ -12,6 +12,8 @@ const VALID_RARITIES = new Set<string>([
   'Illustration Rare', 'Special Illustration Rare',
   'Hyper Rare', 'ACE SPEC Rare', 'Mega Hyper Rare',
   'Poke Ball Holo', 'Master Ball Holo',
+  'Shiny Rare', 'Shiny Ultra Rare',  // Paldean Fates
+  'Mega Attack Rare',                 // Ascended Heroes
 ]);
 
 export interface ExtendedDataEntry {

@@ -30,9 +30,21 @@ interface PullRates {
   hitDistribution: Record<string, number>;
 }
 
-/** Effective price of a PriceEntry: prefer marketPrice, fall back to midPrice. */
+/**
+ * Per-card threshold separating "individually sellable" from "bulk-only".
+ * TCGPlayer Market prices embed ~$0.50 of single-sale overhead (fees + shipping);
+ * cards below this threshold are realistically sold to bulk buyers at the
+ * going rate (~$0.01/card). EV math uses this realizable value, not the
+ * inflated single-sale list price.
+ */
+const BULK_THRESHOLD = 0.50;
+const BULK_RATE      = 0.01;
+
+/** Realizable effective price for EV math: prefer marketPrice, fall back to
+ *  midPrice, then clamp sub-threshold prices to the bulk rate. */
 function effectivePrice(entry: PriceEntry): number {
-  return entry.marketPrice > 0 ? entry.marketPrice : entry.midPrice;
+  const raw = entry.marketPrice > 0 ? entry.marketPrice : entry.midPrice;
+  return raw >= BULK_THRESHOLD ? raw : BULK_RATE;
 }
 
 /** Average effective price over a list of entries. Returns null if empty. */
@@ -67,6 +79,8 @@ const ALL_RARITIES: Rarity[] = [
   'Illustration Rare', 'Special Illustration Rare',
   'Hyper Rare', 'ACE SPEC Rare', 'Mega Hyper Rare',
   'Poke Ball Holo', 'Master Ball Holo',
+  'Shiny Rare', 'Shiny Ultra Rare',  // Paldean Fates
+  'Mega Attack Rare',                 // Ascended Heroes
 ];
 
 /**
