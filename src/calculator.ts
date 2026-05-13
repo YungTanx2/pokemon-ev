@@ -1,4 +1,4 @@
-import { PriceEntry, Rarity, EvResult, RarityStats, SlotBreakdown } from './types';
+import { PriceEntry, Rarity, EvResult, RarityStats, SlotBreakdown, HitRarityBreakdown } from './types';
 
 /**
  * Pull-rate config shape for a Pokemon set.
@@ -144,11 +144,13 @@ export function calculateEV(
   // hitDistribution values are P(rarity per pack), stored as subType='Normal'
   // (via Holofoil fallback in tcgcsv.ts for ex/V/IR/SIR/HR cards).
   let hitEv = 0;
+  const hitBreakdown: Record<string, HitRarityBreakdown> = {};
   for (const [rarity, fraction] of Object.entries(hitDistribution)) {
-    const avg = byRarity[rarity]?.avgNormalPrice ?? 0;
-    const ev  = fraction * avg;
+    const avgPrice = byRarity[rarity]?.avgNormalPrice ?? null;
+    const ev       = fraction * (avgPrice ?? 0);
     hitEv += ev;
     if (byRarity[rarity]) byRarity[rarity].evContribution += ev;
+    hitBreakdown[rarity] = { fraction, avgPrice, evPerBox: ev * packsPerBox };
   }
 
   const slotBreakdown: SlotBreakdown = { commonEv, uncommonEv, reverseHoloEv, hitEv };
@@ -184,6 +186,7 @@ export function calculateEV(
     topHoloPulls,
     topReverseHoloPulls,
     slotBreakdown,
+    hitBreakdown,
     pricedCardCount: new Set(entries.map((e) => `${e.productId}::${e.subType}`)).size,
     totalCardCount: 0, // populated by server.ts after extractCards
   };
