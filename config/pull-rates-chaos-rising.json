@@ -1,0 +1,20 @@
+{
+  "_note": "Pull rates inherited from ME03: Perfect Order (ThePriceDex empirical study, 8000+ packs). Chaos Rising (ME04) has no Poke Ball / Master Ball holos and no Mega Attack Rare. Reverse holo splits use ME1 defaults. Update _source and values once ThePriceDex publishes ME04-specific data. Fractions are per-pack expected counts (raw 1/X).",
+  "_source": "https://www.thepricedex.com/set/me3/perfect-order/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":   1.000000,
+    "Uncommon": 0.666667,
+    "Rare":     0.185185
+  },
+  "hitDistribution": {
+    "Rare":                       0.714286,
+    "Double Rare":                0.200000,
+    "Ultra Rare":                 0.083333,
+    "Illustration Rare":          0.111111,
+    "Special Illustration Rare":  0.012346,
+    "Mega Hyper Rare":            0.000560
+  }
+}
