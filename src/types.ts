@@ -17,7 +17,9 @@ export type Rarity =
   | 'Shiny Rare'
   | 'Shiny Ultra Rare'
   // Ascended Heroes exclusive
-  | 'Mega Attack Rare';
+  | 'Mega Attack Rare'
+  // Black Bolt / White Flare exclusive
+  | 'Black White Rare';
 
 // TCGCSV subType names for Pokemon cards.
 // Note: Double Rare / Ultra Rare / IR / SIR / HR only have Holofoil (no Normal print);

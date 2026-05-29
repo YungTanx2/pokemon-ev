@@ -84,6 +84,7 @@ const ALL_RARITIES: Rarity[] = [
   'Poke Ball Holo', 'Master Ball Holo',
   'Shiny Rare', 'Shiny Ultra Rare',  // Paldean Fates
   'Mega Attack Rare',                 // Ascended Heroes
+  'Black White Rare',                 // Black Bolt / White Flare
 ];
 
 /**

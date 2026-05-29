@@ -1,0 +1,22 @@
+{
+  "_note": "Pull rates from ThePriceDex empirical study, sourced from community data. Poke Ball Holo and Master Ball Holo rates match Black Bolt (parallel sets, shared survey data). Uncommon RH differs slightly from Black Bolt (1/1.7 vs 1/1.8). Black White Rare (BWR) rate = 2 cards × 1/992 per card = 1/496. No Hyper Rare in this set. Fractions are per-pack expected counts.",
+  "_source": "https://www.thepricedex.com/set/rsv10pt5/white-flare/pull-rates",
+  "packsPerBox": 36,
+  "commonCount": 6,
+  "uncommonCount": 3,
+  "reverseHoloDistribution": {
+    "Common":          0.714286,
+    "Uncommon":        0.588235,
+    "Rare":            0.181818,
+    "Poke Ball Holo":  0.306470,
+    "Master Ball Holo":0.051361
+  },
+  "hitDistribution": {
+    "Rare":                       0.714286,
+    "Double Rare":                0.212766,
+    "Ultra Rare":                 0.058140,
+    "Illustration Rare":          0.163934,
+    "Special Illustration Rare":  0.012500,
+    "Black White Rare":           0.002016
+  }
+}
