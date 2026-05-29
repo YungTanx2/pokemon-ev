@@ -20,6 +20,8 @@ export const SUPPORTED_SETS: SetDef[] = [
   { id: 'prismatic-evolutions',     name: 'Prismatic Evolutions',       groupId: 23821 },
   { id: 'journey-together',         name: 'Journey Together',           groupId: 24073 },
   { id: 'destined-rivals',          name: 'Destined Rivals',            groupId: 24269 },
+  { id: 'black-bolt',               name: 'Black Bolt',                 groupId: 24325 },
+  { id: 'white-flare',              name: 'White Flare',                groupId: 24326 },
   { id: 'mega-evolution',           name: 'Mega Evolution',             groupId: 24380 },
   { id: 'phantasmal-flames',        name: 'Phantasmal Flames',          groupId: 24448 },
   { id: 'ascended-heroes',          name: 'Ascended Heroes',            groupId: 24541 },
