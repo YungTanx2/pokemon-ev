@@ -27,7 +27,8 @@ export const SUPPORTED_SETS: SetDef[] = [
   { id: 'ascended-heroes',          name: 'Ascended Heroes',            groupId: 24541 },
   { id: 'perfect-order',            name: 'Perfect Order',              groupId: 24587 },
   { id: 'chaos-rising',             name: 'Chaos Rising',               groupId: 24655 },
+  { id: 'pitch-black',              name: 'Pitch Black',                groupId: 24688 },
 ];
 
 /** The set shown by default when the web app loads — update to the latest released set. */
-export const DEFAULT_SET_ID = 'chaos-rising';
+export const DEFAULT_SET_ID = 'pitch-black';
